@@ -10,19 +10,18 @@ public class LightChecker {
         this.trafficLight = trafficLight;
     }
 
-    public Color getLightColor(int minutes) {
+    public Color getLightColor(double minutes) {
         Color color = null;
         int cycleDuration = getSumOfLightsDuration(trafficLight.getGreenLight(), trafficLight.getYellowLight(), trafficLight.getRedLight());
-        for (int i = 0; i <= minutes; i += cycleDuration) {
-            if (isValid(trafficLight.getGreenLight(), minutes, i)) {
-                color = trafficLight.getGreenLight().getColor();
-            }
-            if (isValid(trafficLight.getYellowLight(), minutes, i)) {
-                color = trafficLight.getYellowLight().getColor();
-            }
-            if (isValid(trafficLight.getRedLight(), minutes, i)) {
-                color = trafficLight.getRedLight().getColor();
-            }
+        int primeMinute = (int) (((minutes / cycleDuration) % 1) * cycleDuration);
+        if (isValid(trafficLight.getGreenLight(), primeMinute)) {
+            color = trafficLight.getGreenLight().getColor();
+        }
+        if (isValid(trafficLight.getYellowLight(), primeMinute)) {
+            color = trafficLight.getYellowLight().getColor();
+        }
+        if (isValid(trafficLight.getRedLight(), primeMinute)) {
+            color = trafficLight.getRedLight().getColor();
         }
         return color;
     }
@@ -35,7 +34,7 @@ public class LightChecker {
         return sum;
     }
 
-    private boolean isValid(Light light, int minutes, int indexOfCycle) {
-        return minutes >= light.getBeginIndex() + indexOfCycle && minutes <= light.getEndIndex() + indexOfCycle;
+    private boolean isValid(Light light, int minutes) {
+        return minutes >= light.getBeginIndex() && minutes <= light.getEndIndex();
     }
 }
