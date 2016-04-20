@@ -1,4 +1,4 @@
-package io.khasang.lightchecker.model;
+package io.khasang.lightchecker.trafficlight;
 
 import io.khasang.lightchecker.light.Light;
 

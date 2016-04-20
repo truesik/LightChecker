@@ -1,4 +1,4 @@
-package io.khasang.lightchecker;
+package io.khasang.lightchecker.trafficlight;
 
 import java.io.BufferedReader;
 import java.io.IOException;

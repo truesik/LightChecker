@@ -1,8 +1,7 @@
-package io.khasang.lightchecker;
+package io.khasang.lightchecker.trafficlight;
 
 import io.khasang.lightchecker.light.Color;
 import io.khasang.lightchecker.light.Light;
-import io.khasang.lightchecker.model.TrafficLight;
 
 public class LightChecker {
     private TrafficLight trafficLight;
