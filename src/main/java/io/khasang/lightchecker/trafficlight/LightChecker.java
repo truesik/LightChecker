@@ -10,9 +10,9 @@ public class LightChecker {
         this.trafficLight = trafficLight;
     }
 
-    public Color getLightColor(double minutes) {
+    public Color getLightColor(double minute) {
         int cycleDuration = getSumOfLightsDurations(trafficLight.getGreenLight(), trafficLight.getYellowLight(), trafficLight.getRedLight());
-        int primeMinute = (int) (((minutes / cycleDuration) % 1) * cycleDuration);
+        int primeMinute = (int) (((minute / cycleDuration) % 1) * cycleDuration);
         return getColor(primeMinute, trafficLight.getGreenLight(), trafficLight.getYellowLight(), trafficLight.getRedLight());
     }
 
