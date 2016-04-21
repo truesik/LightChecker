@@ -23,10 +23,9 @@ public class MinutesReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        int value;
         if (isInteger(line)) {
             if (isPositive(Integer.valueOf(line))) {
-                value = Integer.valueOf(line);
+                return Integer.valueOf(line);
             } else {
                 System.err.println("Введите положительное число!");
                 return getMinutes(reader);
@@ -35,7 +34,6 @@ public class MinutesReader {
             System.err.println("Введите число!");
             return getMinutes(reader);
         }
-        return value;
     }
 
     private boolean isInteger(String str) {
