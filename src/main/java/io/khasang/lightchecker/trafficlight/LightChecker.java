@@ -25,13 +25,12 @@ public class LightChecker {
     }
 
     private Color getColor(int minute, Light... lights) {
-        Color color = null;
         for (Light light : lights) {
             if (isLightTurnsOnThisMinute(light, minute)) {
-                color = light.getColor();
+                return light.getColor();
             }
         }
-        return color;
+        throw new Error("Cannot get color.");
     }
 
     private boolean isLightTurnsOnThisMinute(Light light, int minute) {
