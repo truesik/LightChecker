@@ -27,14 +27,14 @@ public class LightChecker {
     private Color getColor(int minute, Light... lights) {
         Color color = null;
         for (Light light : lights) {
-            if (isValid(light, minute)) {
+            if (isLightTurnsOnThisMinute(light, minute)) {
                 color = light.getColor();
             }
         }
         return color;
     }
 
-    private boolean isValid(Light light, int minute) {
+    private boolean isLightTurnsOnThisMinute(Light light, int minute) {
         return minute >= light.getBeginIndex() && minute <= light.getEndIndex();
     }
 }
