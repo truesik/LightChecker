@@ -10,7 +10,7 @@ public class LightChecker {
         this.trafficLight = trafficLight;
     }
 
-    public Color getLightColor(double minute) throws Exception {
+    public Color getLightColor(double minute) {
         int cycleDuration = getSumOfLightsDurations(trafficLight.getGreenLight(), trafficLight.getYellowLight(), trafficLight.getRedLight());
         int primeMinute = (int) (((minute / cycleDuration) % 1) * cycleDuration);
         return getColor(primeMinute, trafficLight.getGreenLight(), trafficLight.getYellowLight(), trafficLight.getRedLight());
@@ -24,13 +24,13 @@ public class LightChecker {
         return sum;
     }
 
-    private Color getColor(int minute, Light... lights) throws Exception {
+    private Color getColor(int minute, Light... lights) {
         for (Light light : lights) {
             if (isLightTurnsOnThisMinute(light, minute)) {
                 return light.getColor();
             }
         }
-        throw new Exception("Cannot get color.");
+        throw new RuntimeException("Cannot get color.");
     }
 
     private boolean isLightTurnsOnThisMinute(Light light, int minute) {
